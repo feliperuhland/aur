@@ -1,0 +1,23 @@
+# Maintainer: Felipe Ruhland github.com/feliperuhland
+
+pkgname=packer
+pkgver=1.7.0
+pkgrel=1
+pkgdesc="Automates the creation of any type of machine image"
+arch=("x86_64")
+url="https://www.packer.io"
+license=('MPL2')
+source=(
+  "$pkgname-$pkgver.zip::https://releases.hashicorp.com/packer/${pkgver}/${pkgname}_${pkgver}_linux_amd64.zip"
+  "https://raw.githubusercontent.com/hashicorp/packer/master/contrib/zsh-completion/_packer"
+)
+
+sha256sums=(
+  "935e81c07381a964bdbaddde2d890c91d52e88b9e5375f3882840925f6a96893"
+  "f388a3054ee283f592bf552b3a331500031715e01b222457f6b4daa7574b6672"
+)
+
+package() {
+  install -Dm755 packer ${pkgdir}/usr/bin/packer
+  install -Dm644 _packer "${pkgdir}"/usr/share/zsh/site-functions/_packer
+}
