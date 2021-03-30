@@ -1,0 +1,20 @@
+# Maintainer: Felipe Ruhland github.com/feliperuhland
+
+pkgname=terraform
+pkgver=0.14.9
+pkgrel=1
+pkgdesc="Open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services"
+arch=("x86_64")
+url="https://www.terraform.io"
+license=('MPL2')
+source=(
+  "$pkgname-$pkgver.zip::https://releases.hashicorp.com/${pkgname}/${pkgver}/${pkgname}_${pkgver}_linux_amd64.zip"
+)
+
+sha256sums=(
+  "47e097cfbfb64e97492934f50e646cb84df952eb76897182557811b45603dbf0"
+)
+
+package() {
+  install -Dm755 terraform ${pkgdir}/usr/bin/terraform
+}
